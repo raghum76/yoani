@@ -21,13 +21,15 @@ int main()
 		op=menu();
 		switch(op){
 			case 1:  // guardar datos
-				cout<<"Guardando datos en vector";
+				cout<<"Guardando datos en vector\n";
 				archSalida.open("sanchez.dat",ios::binary|ios::out);
 
 				while (otro=='s' || otro=='S'){
-					cout<<"Dame numero de cuenta nombre y calificacion";
+					cout<<"Dame numero de cuenta";
 					cin>>nc;
+					cout<<"Dame nombre";
 					cin>>nombre;
+					cout<<"Dame calificacion";
 					cin>>cal;
 					archSalida.write((char *)&nc,sizeof(int));
 					archSalida.write(nombre,20);
@@ -65,13 +67,19 @@ int main()
 					i++;
 				}while (!arch.eof());
 				cuantos=i-1;
-				cout<<"Se leyeron " <<cuantos;
+				cout<<"Se leyeron " <<cuantos<<"\n";
 				arch.close();
 				break;
 			case 4:  //mostrar vector
-				
+				cout<<"\n Datos del vector \n";
+				for (i=0;i<cuantos;i++){
+					cout<<"\nRegistro "<<i+1<<" "<<calif[i];
+				}
+				cout<<"\n\nFIN vector";
 				break;
 			case 5:  //primero y ultimo
+				cout<<"\n    primer dato "<<calif[0];
+				cout<<"\n    ultimo dato "<<calif[cuantos-1];
 				break;
 		}
 
